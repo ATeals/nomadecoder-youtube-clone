@@ -2,15 +2,21 @@
   "name": "wetube",
   "version": "1.0.0",
   "description": "clone wetube",
-  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ATeals/nomadecoder-youtube-clone.git"
+  },
+  "scripts": {
+    "start": "node index.js"
   },
   "author": "ateals",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ATeals/nomadecoder-youtube-clone/issues"
   },
-  "homepage": "https://github.com/ATeals/nomadecoder-youtube-clone#readme"
+  "homepage": "https://github.com/ATeals/nomadecoder-youtube-clone#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
+ 
