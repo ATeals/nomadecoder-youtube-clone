@@ -1,19 +1,22 @@
 import express from "express";
 import morgan from "morgan";
+import globalRouter from "./routers/globalRouter";
+import userRouter from "./routers/userRouter";
+import videoRouter from "./routers/videoRouter";
+
+
 
 const PORT = 4000;
 const app = express(); 
 
-const globalRouter = express.Router();
-const userRouter = express.Router();
-const videoRouter = express.Router();
+
 
 app.use("/", globalRouter);
-app.use("/vidios", videoRouter);
 app.use("/users", userRouter);
+app.use("/videos", videoRouter);
 
 
 
 
-app.listen(PORT, ()=> console.log(`server listening on http://localhost:4000/ 👻`));
+app.listen(PORT, ()=> console.log(`✅server listening on http://localhost:4000/ 👻`));
 
