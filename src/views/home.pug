@@ -1,7 +1,9 @@
 extends base.pug
+include mixins/video
 
 
 block content
-    h1 Home!
-    input(type="text")
-    button send
+    h2 Welcome here you will see the trending videos
+
+    each info in videos
+       +video(info) 
