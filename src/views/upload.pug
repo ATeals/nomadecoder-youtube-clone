@@ -2,6 +2,11 @@ extends base.pug
 
 
 block content 
+    if error
+        span=error
     form(method="POST")
         input(name= "title", type="text", placeholder = "Title", required)
+        input(name= "description", type="text", placeholder = "Discription", required)
+        input(name= "hashtags", type="text", placeholder = "Hashtags, separated by comma", required)
+
         input(type="submit" value="Upload Video") 
