@@ -2,5 +2,13 @@ extends base.pug
 
 
 block content
-    h3 #{video.views} #{video.views === 1 ?"view":  "views"} 
+    h2=video.description
+    h3 #{video.meta.views} #{video.meta.views <= 1 ?"view":  "views"} 
+    
+    h3 tags: 
+        each tags in video.hashtags 
+            span=tags 
+
     a(href=`${video.id}/edit`) Edit video &rarr; 
+    br
+    a(href=`${video.id}/delete`) Delete video &rarr; 
