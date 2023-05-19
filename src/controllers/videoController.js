@@ -2,7 +2,6 @@ import Video from "../models/Video";
 
 export const home = async (req, res) => {
     const videos = await Video.find({}).sort({ createdAt: "desc" });
-    console.log(videos);
     res.render("home", { pageTitle: "Home", videos });
 };
 
@@ -58,7 +57,7 @@ export const postUpload = async (req, res) => {
         });
         return res.redirect("/");
     } catch (error) {
-        return res.render("upload", {
+        return res.status(404).render("upload", {
             pageTitle: "Upload Video",
             error: error._message,
         });
@@ -69,7 +68,7 @@ export const deleteVideo = async (req, res) => {
     const { id } = req.params;
     const video = await Video.exists({ _id: id });
     if (!video) {
-        return res.render("404", { pageTitle: "Not Found" });
+        return res.status(404).render("404", { pageTitle: "Not Found" });
     }
     await Video.findByIdAndDelete(id);
     return res.redirect("/");
