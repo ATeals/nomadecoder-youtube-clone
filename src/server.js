@@ -1,6 +1,8 @@
 import express from "express";
 import morgan from "morgan";
 import session from "express-session";
+import MongoStore from "connect-mongo";
+
 import rootRouter from "./routers/rootRouter";
 import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
@@ -17,8 +19,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(
     session({
         secret: "Hello!!",
-        resave: true,
-        saveUninitialized: true,
+        resave: false,
+        saveUninitialized: false, //세션을 수정할 때만 DB에 세션을 수정하고 쿠키를 브라우저에 보냄
+        store: MongoStore.create({ mongoUrl: "mongodb://127.0.0.1:27017/wetube" }),
     })
 );
 

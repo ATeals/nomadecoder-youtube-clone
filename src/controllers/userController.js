@@ -43,6 +43,7 @@ export const postLogin = async (req, res) => {
     const ok = await bcrypt.compare(password, user.password);
     if (!ok) return res.status(400).render("user/login", { pageTitle: "LogIn", error: "Wrong Password" });
 
+    //이곳에서 세션을 수정
     req.session.loggedIn = true;
     req.session.user = user;
 
