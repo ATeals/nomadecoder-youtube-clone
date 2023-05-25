@@ -4,7 +4,9 @@ extends base.pug
 block content 
     if error
         span=error
-    form(method="POST")
+    form(method = "post" enctype="multipart/form-data")
+        label(for="video") video 
+        input(name="video" type="file" id="video" accept = "video/*" required)
         input(name= "title", type="text", placeholder = "Title", required, maxlength = 80)
         input(name= "description", type="text", placeholder = "Discription", required, minlength = 20)
         input(name= "hashtags", type="text", placeholder = "Hashtags, separated by comma", required)

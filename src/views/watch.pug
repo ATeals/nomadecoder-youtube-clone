@@ -2,13 +2,17 @@ extends base.pug
 
 
 block content
-    h2=video.description
-    h3 #{video.meta.views} #{video.meta.views <= 1 ?"view":  "views"} 
-    
-    h3 tags: 
-        each tags in video.hashtags 
-            span=tags 
-
-    a(href=`${video.id}/edit`) Edit video &rarr; 
+    video(src="/"+video.fileUrl, controls)
+    div 
+        h2=video.description
+        a(href=`/users/${video.owner._id}`) 
+            small=video.owner.name 
+    div
+        small #{video.meta.views} #{video.meta.views <= 1 ?"view":  "views"} | 
+        small=video.createdAt
     br
-    a(href=`${video.id}/delete`) Delete video &rarr; 
+
+    if String(video.owner._id) === String(loggedInUser._id)
+        a(href=`${video.id}/edit`) Edit video &rarr; 
+        br
+        a(href=`${video.id}/delete`) Delete video &rarr; 

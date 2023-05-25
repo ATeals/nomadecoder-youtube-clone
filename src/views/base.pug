@@ -13,12 +13,10 @@ html(lang="ko")
                     if loggedIn
                         li 
                             a(href="/search")  Search &nbsp;
-                        li 
-                            a(href="/videos/upload")  Upload Video &nbsp;
                         li
                             a(href="/users/logout") Log Out &nbsp;
                         li
-                            a(href="/users/edit") #{loggedInUser.name}'s Profile
+                            a(href=`/users/${loggedInUser._id}`) #{loggedInUser.name}'s Profile
                  
                     if !loggedIn
                         li   

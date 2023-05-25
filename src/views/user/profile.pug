@@ -1,0 +1,15 @@
+extends ../base.pug
+include ../mixins/video
+
+block content 
+    a(href="edit") Edit Profile &rarr; 
+    br
+    a(href="/videos/upload")  Upload Video &rarr;
+    hr
+
+    h1 #{user.name}'s Video
+    div 
+        each video in user.videos
+            +video(video)
+        else   
+            li No Video

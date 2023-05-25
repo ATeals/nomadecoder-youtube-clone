@@ -1,4 +1,5 @@
 import User from "../models/User";
+import Video from "../models/Video";
 import bcrypt from "bcrypt";
 import fetch from "node-fetch";
 
@@ -143,7 +144,6 @@ export const postEdit = async (req, res) => {
         file,
     } = req;
 
-    console.log(file.path);
     //이미 있는 유저네임이나 이메일 사용시 불가능 하게 만드는 코드!!!
 
     const updateUser = await User.findByIdAndUpdate(
@@ -191,4 +191,13 @@ export const postChangePassword = async (req, res) => {
     return res.redirect("/users/logout");
 };
 
-export const see = (req, res) => res.send("See user");
+export const profile = async (req, res) => {
+    const { id } = req.params;
+    const user = await User.findById(id).populate("videos");
+    if (!user) {
+        return res.status(404).render("404", { pageTitle: "Not found" });
+    }
+
+    const videos = await Video.find({ owner: user._id });
+    return res.render("user/profile.pug", { pageTitle: `${user.name}`, user });
+};
