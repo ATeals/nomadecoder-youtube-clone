@@ -7,8 +7,8 @@
         "url": "git+https://github.com/ATeals/nomadecoder-youtube-clone.git"
     },
     "scripts": {
-        "dev": "nodemon --exec babel-node src/init.js",
-        "assets": "webpack --config webpack.config",
+        "dev": "nodemon",
+        "assets": "webpack",
         "build": "babel src -d build",
         "start": "node build/init.js"
     },
@@ -37,6 +37,7 @@
         "@babel/preset-env": "^7.20.2",
         "babel-loader": "^9.1.2",
         "css-loader": "^6.7.4",
+        "mini-css-extract-plugin": "^2.7.6",
         "nodemon": "^2.0.22",
         "sass": "^1.62.1",
         "sass-loader": "^13.3.0",
