@@ -5,27 +5,9 @@ html(lang="ko")
         link(rel="stylesheet" href="https://unpkg.com/mvp.css")
         link(rel="stylesheet" href="/assets/css/styles.css")
     body
-        header
-            h1=pageTitle
-            nav 
-                ul 
-                    li 
-                        a(href="/")  Home &nbsp;
-                    if loggedIn
-                        li 
-                            a(href="/search")  Search &nbsp;
-                        li
-                            a(href="/users/logout") Log Out &nbsp;
-                        li
-                            a(href=`/users/${loggedInUser._id}`) #{loggedInUser.name}'s Profile
-                 
-                    if !loggedIn
-                        li   
-                            a(href="/join")  Join &nbsp;
-                        li  
-                            a(href="/login")  LogIn &nbsp;
-
+        include partials/header.pug 
         main
             block content
-    include partials/footer.pug  
-    script(src="/assets/js/main.js") 
+
+        include partials/footer.pug  
+        block scripts

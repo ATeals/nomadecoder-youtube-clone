@@ -6,6 +6,7 @@ import fetch from "node-fetch";
 export const getJoin = (req, res) => {
     return res.render("user/createAccount", { pageTitle: "Create Account", error: "" });
 };
+
 export const postJoin = async (req, res) => {
     const { email, name, username, password, password2, location } = req.body;
     if (password !== password2) {
@@ -32,6 +33,7 @@ export const postJoin = async (req, res) => {
         });
     }
 };
+
 export const getLogin = (req, res) => {
     return res.render("user/login", { pageTitle: "Login" });
 };

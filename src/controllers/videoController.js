@@ -13,7 +13,7 @@ export const watch = async (req, res) => {
     if (!video) {
         return res.render("404", { pageTitle: "Not Found" });
     }
-    return res.render("watch", { pageTitle: video.title, video });
+    return res.render("video/watch", { pageTitle: video.title, video });
 };
 
 export const getEdit = async (req, res) => {
@@ -29,7 +29,7 @@ export const getEdit = async (req, res) => {
     if (String(video.owner) !== String(_id)) {
         return res.status(403).redirect("/");
     }
-    return res.render("edit", { pageTitle: `Edit ${video.title} `, video });
+    return res.render("video/edit", { pageTitle: `Edit ${video.title} `, video });
 };
 export const postEdit = async (req, res) => {
     const { id } = req.params;
@@ -50,7 +50,7 @@ export const postEdit = async (req, res) => {
 };
 
 export const getUpload = (req, res) => {
-    return res.render("upload", { pageTitle: "Upload Video" });
+    return res.render("video/upload", { pageTitle: "Upload Video" });
 };
 
 export const postUpload = async (req, res) => {
@@ -74,7 +74,7 @@ export const postUpload = async (req, res) => {
 
         return res.redirect("/");
     } catch (error) {
-        return res.status(404).render("upload", {
+        return res.status(404).render("video/upload", {
             pageTitle: "Upload Video",
             error: error._message,
         });

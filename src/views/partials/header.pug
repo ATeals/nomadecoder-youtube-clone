@@ -1,0 +1,19 @@
+header
+    h1=pageTitle
+    nav 
+        ul 
+            li 
+                a(href="/")  Home &nbsp;
+            if loggedIn
+                li 
+                    a(href="/search")  Search &nbsp;
+                li
+                    a(href="/users/logout") Log Out &nbsp;
+                li
+                    a(href=`/users/${loggedInUser._id}`) #{loggedInUser.name}'s Profile
+            
+            if !loggedIn
+                li   
+                    a(href="/join")  Join &nbsp;
+                li  
+                    a(href="/login")  LogIn &nbsp;
