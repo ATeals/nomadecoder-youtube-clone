@@ -1,5 +1,6 @@
 import Video from "../models/Video";
 import User from "../models/User";
+import Comment from "../models/Comment";
 
 export const home = async (req, res) => {
     const videos = await Video.find({}).sort({ createdAt: "desc" });
@@ -8,7 +9,7 @@ export const home = async (req, res) => {
 
 export const watch = async (req, res) => {
     const { id } = req.params;
-    const video = await Video.findById(id).populate("owner");
+    const video = await Video.findById(id).populate("owner").populate("comments");
 
     if (!video) {
         return res.render("404", { pageTitle: "Not Found" });
@@ -130,10 +131,22 @@ export const registerView = async (req, res) => {
 };
 
 export const createComment = async (req, res) => {
-    const { id } = req.params;
-    const { text } = req.body;
+    const {
+        params: { id },
+        body: { text },
+        session: { user },
+    } = req;
+    const video = await Video.findById(id);
 
-    console.log(id, req.body);
+    if (!video) return res.sendStatus(404);
 
-    return res.end();
+    const commnet = await Comment.create({
+        text,
+        owner: user._id,
+        video: id,
+    });
+    video.comments.push(commnet._id);
+    video.save();
+
+    return res.sendStatus(201);
 };
