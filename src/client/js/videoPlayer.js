@@ -70,3 +70,11 @@ video.addEventListener("timeupdate", checkVideoTime);
 timeLine.addEventListener("input", timeLineHander);
 
 fullScreenBtn.addEventListener("click", fullScreenHander);
+
+video.addEventListener("ended", () => {
+    const { id } = videoContainer.dataset;
+
+    fetch(`/api/videos/${id}/view`, {
+        method: "post",
+    });
+});

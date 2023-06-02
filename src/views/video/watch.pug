@@ -3,7 +3,7 @@ extends ../base.pug
 
 block content
 
-    div.videoContainer
+    div(data-id = video._id).videoContainer
         video(src="/"+video.fileUrl controls)
 
         div
@@ -35,5 +35,13 @@ block content
         br
         a(href=`${video.id}/delete`) Delete video &rarr; 
 
+    if loggedIn
+        div.video__comments
+            form.comment__form#comment__form
+                textarea(cols="30", rows="10", placeholder = "Comment....")
+                input(type="submit" value="Comment").comment__form-submit
+
 block scripts 
     script(src="/assets/js/videoPlayer.js")   
+    if loggedIn
+        script(src="/assets/js/commentSection.js")   

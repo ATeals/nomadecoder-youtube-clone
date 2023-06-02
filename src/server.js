@@ -1,11 +1,16 @@
+//server
 import express from "express";
 import session from "express-session";
 import MongoStore from "connect-mongo";
+
+//router
 import rootRouter from "./routers/rootRouter";
 import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
-import { localsMiddleware } from "./middlewares";
+import apiRouter from "./routers/apiRouter";
 
+//middleware
+import { localsMiddleware } from "./middlewares";
 import flash from "express-flash";
 
 const app = express();
@@ -14,6 +19,7 @@ const app = express();
 app.set("view engine", "pug");
 app.set("views", process.cwd() + "/src/views");
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 /** session */
 app.use(
@@ -32,6 +38,7 @@ app.use(localsMiddleware);
 app.use("/", rootRouter);
 app.use("/users", userRouter);
 app.use("/videos", videoRouter);
+app.use("/api", apiRouter);
 app.use("/uploads", express.static("uploads"));
 app.use("/assets", express.static("assets"));
 
