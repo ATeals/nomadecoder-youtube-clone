@@ -1,6 +1,7 @@
 import Video from "../models/Video";
 import User from "../models/User";
 import Comment from "../models/Comment";
+import fs from "fs";
 
 export const home = async (req, res) => {
     const videos = await Video.find({}).sort({ createdAt: "desc" });
@@ -105,6 +106,12 @@ export const deleteVideo = async (req, res) => {
             },
         }
     );
+
+    fs.unlink(video.fileUrl, function (err) {
+        if (err) {
+            console.log("Error : ", err);
+        }
+    });
 
     await Video.findByIdAndDelete(id);
     return res.redirect("/");
