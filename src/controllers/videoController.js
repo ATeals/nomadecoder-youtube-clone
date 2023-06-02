@@ -84,7 +84,7 @@ export const postUpload = async (req, res) => {
 
 export const deleteVideo = async (req, res) => {
     const { id } = req.params;
-    const video = await Video.exists({ _id: id });
+    const video = await Video.findById(id);
     const {
         user: { _id },
     } = req.session;
@@ -96,6 +96,15 @@ export const deleteVideo = async (req, res) => {
     if (String(video.owner) !== String(_id)) {
         return res.status(403).redirect("/");
     }
+
+    await User.updateOne(
+        { _id },
+        {
+            $pull: {
+                videos: video._id,
+            },
+        }
+    );
 
     await Video.findByIdAndDelete(id);
     return res.redirect("/");
@@ -149,4 +158,29 @@ export const createComment = async (req, res) => {
     video.save();
 
     return res.sendStatus(201);
+};
+
+export const deleteComment = async (req, res) => {
+    const {
+        params: { id },
+        body: { videoId },
+    } = req;
+    const comment = await Comment.findById(id);
+
+    if (!comment) {
+        return res.sendStatus(404);
+    }
+
+    await Comment.findByIdAndDelete(id);
+
+    await Video.updateOne(
+        { _id: videoId },
+        {
+            $pull: {
+                comments: id,
+            },
+        }
+    );
+
+    return res.sendStatus(200);
 };

@@ -1,5 +1,26 @@
 const videoContainer = document.querySelector(".videoContainer");
 const form = document.getElementById("comment__form");
+const deleteBtns = document.querySelectorAll(".video__comments-column:first-child button");
+
+//삭제 이벤트
+deleteBtns.forEach((btn) => {
+    btn.addEventListener("click", async () => {
+        const { id } = btn.parentNode;
+        const videoId = videoContainer.dataset.id;
+
+        await fetch(`/api/videos/${id}/comment/delete`, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                videoId,
+            }),
+        });
+
+        window.location.reload();
+    });
+});
 
 // const addComment = (text) => {
 //     const videoComments = document.querySelector(".video__comments ul");
@@ -33,5 +54,6 @@ form.addEventListener("submit", async (e) => {
         }),
     });
     if (status === 404) return;
+    window.location.reload();
     // addComment(text);
 });
