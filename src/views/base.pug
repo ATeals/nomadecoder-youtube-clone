@@ -5,6 +5,8 @@ html(lang="ko")
         link(rel="stylesheet" href="https://unpkg.com/mvp.css")
         link(rel="stylesheet" href="/assets/css/styles.css")
     body
+        if messages.error 
+            span=messages.error 
         include partials/header.pug 
         main
             block content

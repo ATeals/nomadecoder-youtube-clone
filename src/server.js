@@ -6,6 +6,8 @@ import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
 import { localsMiddleware } from "./middlewares";
 
+import flash from "express-flash";
+
 const app = express();
 
 //middleware
@@ -23,7 +25,9 @@ app.use(
     })
 );
 
+app.use(flash());
 app.use(localsMiddleware);
+
 //route
 app.use("/", rootRouter);
 app.use("/users", userRouter);

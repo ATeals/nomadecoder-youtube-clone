@@ -111,6 +111,6 @@ export const search = async (req, res) => {
 
         return res.render("search", { pageTitle: "Search", videos });
     }
-    console.log(req.body);
+
     return res.render("search", { pageTitle: "Search", videos: [] });
 };
