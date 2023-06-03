@@ -1,17 +1,20 @@
 header
-    h1=pageTitle
+    h1 
+        a(href="/") Attic Projector
     nav 
         ul 
             li 
-                a(href="/")  Home &nbsp;
+                a(href="/")  <i class="fa-brands fa-youtube"></i>
             if loggedIn
                 li 
-                    a(href="/search")  Search &nbsp;
+                    a(href="/search")  <i class="fa-solid fa-magnifying-glass"></i>
                 li
-                    a(href="/users/logout") Log Out &nbsp;
+                    a(href="/users/logout") Log Out
                 li
-                    a(href=`/users/${loggedInUser._id}`) #{loggedInUser.name}'s Profile
-            
+                    a(href=`/users/${loggedInUser._id}`) 
+                        img(src=`/${loggedInUser.avatarUrl}`)
+                   
+
             if !loggedIn
                 li   
                     a(href="/join")  Join &nbsp;
