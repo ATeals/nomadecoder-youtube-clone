@@ -1,0 +1,70 @@
+.join {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 20%;
+
+    div a {
+        color: $highlightColor;
+    }
+}
+
+.join form {
+    width: 80%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+
+    input {
+        margin-bottom: 10px;
+        font-size: 15px;
+        background-color: $inputbg;
+        color: $fontColor;
+        padding: 10px 20px;
+
+        &:focus {
+            outline: 1px;
+            outline-color: $highlightColor;
+            outline-style: solid;
+        }
+    }
+
+    .submit {
+        background-color: $highlightColor;
+        color: $bgColor;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    hr {
+        width: 100%;
+        border-color: $highlightColor;
+        margin-bottom: 20px;
+    }
+    div {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    div .social {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $highlightColor;
+        color: $bgColor;
+        padding: 20px;
+        font-weight: 600;
+
+        img {
+            margin-right: 5px;
+            border-radius: 50%;
+        }
+    }
+}

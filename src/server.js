@@ -39,7 +39,7 @@ app.use("/", rootRouter);
 app.use("/users", userRouter);
 app.use("/videos", videoRouter);
 app.use("/api", apiRouter);
-app.use("/uploads", express.static("uploads"));
-app.use("/assets", express.static("assets"));
+app.use("/uploads", express.static("./uploads"));
+app.use("/assets", express.static("./assets"));
 
 export default app;

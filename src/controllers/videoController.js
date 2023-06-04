@@ -120,16 +120,33 @@ export const deleteVideo = async (req, res) => {
 export const search = async (req, res) => {
     const { title } = req.query;
     if (title) {
-        const videos = await Video.find({
-            title: {
-                $regex: new RegExp(`${title}`, "i"),
-            },
-        });
+        const videos = await Video.find()
+            .or([
+                {
+                    title: {
+                        $regex: new RegExp(`${title}`, "i"),
+                    },
+                },
+                {
+                    hashtags: {
+                        $elemMatch: {
+                            $regex: new RegExp(`${title}`, "i"),
+                        },
+                    },
+                },
+                {
+                    description: {
+                        $regex: new RegExp(`${title}`, "i"),
+                    },
+                },
+            ])
+            .populate("owner");
 
         return res.render("search", { pageTitle: "Search", videos });
     }
 
-    return res.render("search", { pageTitle: "Search", videos: [] });
+    const videos = await Video.find().populate("owner");
+    return res.render("search", { pageTitle: "Search", videos });
 };
 
 export const registerView = async (req, res) => {

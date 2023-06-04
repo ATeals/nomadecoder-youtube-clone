@@ -1,8 +1,9 @@
 extends base.pug
-include mixins/video
+include mixins/videoTictok
 
 
 block content
-    div.videoBox
-        each info in videos
-            +video(info) 
+    section.home
+        div.videoBox
+            each info in videos
+                +video(info) 

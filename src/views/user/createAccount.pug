@@ -1,18 +1,24 @@
 extends ../base.pug
 
 block content  
+    section.join
+        span=error
+        form(method="post")
+            input( name="email", type="email", placeholder="email", required)
+            input( name="username", type="text", placeholder="username", required)
+            input( name="password", type="password", placeholder="password", required)
+            input( name="password2", type="password", placeholder="confirmPassword", required)
+            input( name="name", type="text", placeholder="name", required)
+            input( name="location", type="text", placeholder="location", required)
+            input(type="submit", value="Join!").submit
 
-    span=error
-    form(method="post")
-        input( name="email", type="email", placeholder="email", required)
-        input( name="username", type="text", placeholder="username", required)
-        input( name="password", type="password", placeholder="password", required)
-        input( name="password2", type="password", placeholder="confirmPassword", required)
-        input( name="name", type="text", placeholder="name", required)
-        input( name="location", type="text", placeholder="location", required)
-        input(type="submit", value="Join!")
-
-        hr
-        div 
-            span Already have an account?  
-            a(href="/login") Log in now &rarr;
+            hr
+            div
+                a.social(href="users/github/start")
+                    img(src="https://www.google.com/s2/favicons?domain=https://github.com/ATeals&sz=24")
+                    span Continue with Github
+            hr
+            
+            div 
+                span Already have an account?  
+                a(href="/login") Log in now &rarr;

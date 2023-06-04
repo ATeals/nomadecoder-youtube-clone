@@ -1,22 +1,41 @@
 header
     h1 
-        a(href="/") Attic Projector
+        a(href="/") Attic
     nav 
         ul 
             li 
                 a(href="/")  <i class="fa-brands fa-youtube"></i>
+            li 
+                a(href="/search")  <i class="fa-solid fa-magnifying-glass"></i>
             if loggedIn
-                li 
-                    a(href="/search")  <i class="fa-solid fa-magnifying-glass"></i>
-                li
-                    a(href="/users/logout") Log Out
-                li
-                    a(href=`/users/${loggedInUser._id}`) 
-                        img(src=`/${loggedInUser.avatarUrl}`)
+                li.profile
+                    img(src=`/${loggedInUser.avatarUrl}`)
                    
 
             if !loggedIn
                 li   
-                    a(href="/join")  Join &nbsp;
-                li  
-                    a(href="/login")  LogIn &nbsp;
+                    a(href="/login")
+                         <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                         span.signin  SignIn
+
+    if loggedIn
+        div.modal.hidden
+            div.modalBubble
+
+                img(src=`/${loggedInUser.avatarUrl}`)
+                div.username=loggedInUser.name
+                
+                hr
+                div.menu
+                    a(href=`/users/${loggedInUser._id}`)
+                        <i class="fa-regular fa-user"></i>
+                        span Profile
+
+                    a(href=``)
+                        <i class="fa-solid fa-film"></i>
+                        span #{loggedInUser.videos.length > 1 ? `${loggedInUser.videos.length} Videos` : `${loggedInUser.videos.length} Video`}
+                
+                    a(href="/users/logout").logOut 
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        span Log Out
+                    

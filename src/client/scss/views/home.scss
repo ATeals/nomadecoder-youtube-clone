@@ -1,39 +1,46 @@
-.videoBox {
+.home {
     width: 100%;
-    height: 100%;
-    scroll-snap-type: y mandatory; // 이거 지렸다...
-    overflow-y: scroll;
-}
+    height: 100vh;
+    padding-top: $headerY;
 
-.videoBox .videoItem {
-    scroll-snap-align: start; // 이거랑 같이 써야함
-    padding-top: 5vh;
-    width: 100%;
-    height: 100%;
-    background-color: wheat;
-}
+    .videoBox {
+        width: 100%;
+        height: 100%;
+        scroll-snap-type: y mandatory; // 이거 지렸다...
+        overflow-y: scroll;
+    }
 
-.video-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    background-color: $bgColor;
-    overflow: hidden;
-}
+    .videoBox .videoTictok {
+        scroll-snap-align: start; // 이거랑 같이 써야함
+        width: 100%;
+        height: 100%;
+        background-color: wheat;
 
-.video-container video {
-    position: absolute;
-    top: calc(50% - 2.5vh);
-    left: 50%;
-    transform: translate(-50%, -50%);
-    object-fit: contain;
-}
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background-color: $bgColor;
+            overflow: hidden;
+        }
 
-.videoText {
-    width: 100%;
-    height: 100%;
-}
+        .video-container video {
+            position: absolute;
+            top: calc(50% - $headerY / 2);
+            left: 50%;
+            transform: translate(-50%, -50%);
+            object-fit: contain;
+            width: 100%;
+            height: auto;
+        }
 
-.videoText h1 {
-    font-size: 30px;
+        .videoText {
+            width: 100%;
+            height: 100%;
+        }
+
+        .videoText h1 {
+            font-size: 30px;
+        }
+    }
 }
