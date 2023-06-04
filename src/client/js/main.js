@@ -18,7 +18,11 @@ import "../scss/styles.scss";
     const modal = document.querySelector(".modal");
     const profile = document.querySelector(".profile");
 
-    profile.addEventListener("click", () => {
+    const modalHander = (e) => {
         modal.classList.toggle("hidden");
+    };
+    profile.addEventListener("click", modalHander);
+    document.querySelector("main").addEventListener("click", () => {
+        modal.classList.add("hidden");
     });
 })();

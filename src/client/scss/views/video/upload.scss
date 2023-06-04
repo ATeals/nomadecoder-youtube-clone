@@ -1,0 +1,36 @@
+.uploadSection {
+    button {
+        background-color: $highlightColor;
+    }
+    .fileUpload {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        label {
+            display: block;
+            width: 50%;
+            background-color: $highlightColor;
+            text-align: center;
+            padding: 10px 20px;
+
+            input {
+                width: 50%;
+            }
+        }
+    }
+
+    input[type="file"] {
+        padding: 0;
+
+        &::-webkit-file-upload-button {
+            background-color: $highlightColor;
+            border: none;
+            padding: 10px 20px;
+            color: $modalColor;
+            font-weight: 600;
+            margin-right: 10px;
+        }
+    }
+}

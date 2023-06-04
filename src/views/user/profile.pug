@@ -1,7 +1,37 @@
 extends ../base.pug
+include ../mixins/videoYoutube
 
-block content 
-    a(href="edit") Edit Profile &rarr; 
-    br
-    a(href="/videos/upload")  Upload Video &rarr;
-    hr
+block content
+    section.profileSection
+        img.profileImg(src=`/${user.avatarUrl}`)
+        h1 #{user.name}
+        div.textBox
+            h2 USERNAME : #{user.username}
+
+            h2
+                <i class="fa-regular fa-envelope"></i>
+                span=user.email
+            h2
+                <i class="fa-solid fa-location-dot"></i>
+                span=user.location
+
+            h2 
+                if user.socialOnly 
+                    img(src="https://www.google.com/s2/favicons?domain=https://github.com/ATeals&sz=24")
+                    span Connected to social
+                else 
+                    <i>❌</i> 
+                    span Not connected to social
+            h2
+                <i class="fa-solid fa-film"></i>
+                span #{user.videos.length > 1 ? `${user.videos.length} Videos` : `${user.videos.length} Video`}
+
+            h2
+                a(href="edit") Edit Profile &rarr; 
+
+        
+        
+        ul.videoBox
+            each video in user.videos
+                +video(video) 
+             

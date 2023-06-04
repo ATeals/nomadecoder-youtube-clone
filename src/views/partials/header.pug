@@ -34,7 +34,9 @@ header
                     a(href=``)
                         <i class="fa-solid fa-film"></i>
                         span #{loggedInUser.videos.length > 1 ? `${loggedInUser.videos.length} Videos` : `${loggedInUser.videos.length} Video`}
-                
+                    a(href="/videos/upload")
+                        <i class="fa-solid fa-upload"></i>
+                        span Upload Video
                     a(href="/users/logout").logOut 
                         <i class="fa-solid fa-arrow-right-from-bracket"></i>
                         span Log Out

@@ -36,6 +36,7 @@
     .submit {
         background-color: $highlightColor;
         color: $bgColor;
+        font-weight: 600;
 
         &:hover {
             cursor: pointer;

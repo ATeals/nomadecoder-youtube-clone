@@ -3,7 +3,7 @@ mixin video(video)
     article.videoYoutube
             a(href=`/videos/${video.id}`)
                 div.column
-                    video(src=video.fileUrl) 
+                    video(src=`${"/" + video.fileUrl}`) 
                 div.column
                     img(src=video.owner.avatarUrl, alt="")
                     div 

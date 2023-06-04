@@ -3,14 +3,14 @@
     height: 100vh;
     padding-top: $headerY;
 
-    .videoBox {
+    .tictok {
         width: 100%;
         height: 100%;
         scroll-snap-type: y mandatory; // 이거 지렸다...
         overflow-y: scroll;
     }
 
-    .videoBox .videoTictok {
+    .tictok .videoTictok {
         scroll-snap-align: start; // 이거랑 같이 써야함
         width: 100%;
         height: 100%;

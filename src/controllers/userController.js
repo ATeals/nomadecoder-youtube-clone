@@ -200,6 +200,5 @@ export const profile = async (req, res) => {
         return res.status(404).render("404", { pageTitle: "Not found" });
     }
 
-    const videos = await Video.find({ owner: user._id });
     return res.render("user/profile.pug", { pageTitle: `${user.name}`, user });
 };
