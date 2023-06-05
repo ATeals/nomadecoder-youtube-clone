@@ -2,7 +2,7 @@ extends ../base.pug
 
 block content  
     section.join
-        span=error
+        span.error=error
         form(method="post")
             input( name="email", type="email", placeholder="email", required)
             input( name="username", type="text", placeholder="username", required)

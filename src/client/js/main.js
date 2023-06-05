@@ -14,15 +14,31 @@ import "../scss/styles.scss";
 // // 주시 시작
 // videos.forEach((video) => intersectionObserver.observe(video));
 
+//home
 (() => {
     const modal = document.querySelector(".modal");
     const profile = document.querySelector(".profile");
 
     const modalHander = (e) => {
         modal.classList.toggle("hidden");
+        document.querySelector("main").addEventListener("click", () => {
+            modal.classList.add("hidden");
+        });
     };
     profile.addEventListener("click", modalHander);
-    document.querySelector("main").addEventListener("click", () => {
-        modal.classList.add("hidden");
+})();
+
+//copy
+(() => {
+    const copyBtns = document.querySelectorAll(".copyBtn");
+    const homeUrl = "http://localhost:4000/";
+
+    copyBtns.forEach((copyBtn) => {
+        copyBtn.addEventListener("click", (e) => {
+            navigator.clipboard.writeText(homeUrl + e.target.dataset.id).then(() => {
+                alert("복사완료");
+            });
+            console.log(homeUrl + e.target.dataset.id);
+        });
     });
 })();

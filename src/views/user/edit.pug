@@ -1,16 +1,16 @@
 extends ../base.pug
 
 block content
-    img(src=`/${loggedInUser.avatarUrl}`, width="100%")
-    form(method = "post" enctype="multipart/form-data")
-        label(for="avatar") Avatar 
-        input(name="avatar" type="file" id="avatar" accept = "image/*")
-        input( name="name", type="text", placeholder="name", value=loggedInUser.name, required)
-        input( name="email", type="email", placeholder="email", value=loggedInUser.email, required)
-        input( name="username", type="text", placeholder="username", value=loggedInUser.username, required)
-        input( name="location", type="text", placeholder="location", value=loggedInUser.location, required)
-        input(type="submit", value="Update Profile!")
-       
-        if !loggedInUser.socialOnly
-            hr
-            a(href="changePassword") Change Password &rarr;
+    section.join.editProfile
+        img(src=`/${loggedInUser.avatarUrl}`, width="100%")
+        form(method = "post" enctype="multipart/form-data")
+            input(name="avatar" type="file" id="avatar" accept = "image/*")
+            input( name="name", type="text", placeholder="name", value=loggedInUser.name, required)
+            input( name="email", type="email", placeholder="email", value=loggedInUser.email, required)
+            input( name="username", type="text", placeholder="username", value=loggedInUser.username, required)
+            input( name="location", type="text", placeholder="location", value=loggedInUser.location, required)
+            input(type="submit", value="Update Profile!").submit
+        
+            if !loggedInUser.socialOnly
+                hr
+                a(href="changePassword") Change Password &rarr;

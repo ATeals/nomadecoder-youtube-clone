@@ -5,7 +5,7 @@ mixin video(video)
                 div.column
                     video(src=`${"/" + video.fileUrl}`) 
                 div.column
-                    img(src=video.owner.avatarUrl, alt="")
+                    img(src=video.owner.socialOnly ? video.owner.avatarUrl : "/" +video.owner.avatarUrl, alt="")
                     div 
                         h1=video.title
                         h2=video.owner.name

@@ -1,0 +1,215 @@
+.watchSection {
+    padding: 10% 20px;
+    .videoContainer {
+        padding: 0;
+        position: relative;
+        width: 100%;
+        padding-bottom: 56.25%; /* 16:9 비율을 나타내는 값입니다. */
+
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .videoController {
+            background: rgba(0, 0, 0, 0.5);
+            width: 100%;
+            position: absolute;
+            padding: 10px;
+            bottom: 0;
+            left: 0;
+            z-index: 2;
+            box-sizing: border-box;
+
+            button {
+                border: none;
+                background: none;
+                color: $fontColor;
+            }
+            .videoControllerBox {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0 10px;
+                box-sizing: border-box;
+
+                div:first-child {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    > * {
+                        margin-right: 10px;
+                    }
+                }
+            }
+
+            .timeLine {
+                margin: 10px 0;
+                width: 100%;
+            }
+
+            input[type="range"] {
+                height: 2px;
+                outline: none;
+                accent-color: $modalColor;
+            }
+        }
+    }
+
+    .videoText {
+        margin: 15px;
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+        h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .viewDate {
+            margin-bottom: 30px;
+        }
+
+        img {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+        }
+        a {
+            color: $highlightColor;
+        }
+
+        .videoOwner {
+            display: flex;
+            align-items: center;
+            margin: 0px 40px;
+            margin-bottom: 30px;
+            justify-content: space-between;
+
+            .user {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+            }
+
+            div {
+                display: flex;
+
+                * {
+                    margin-left: 10px;
+                }
+            }
+        }
+
+        pre {
+            border: 1px solid $highlightColor;
+            width: 50%;
+            padding: 20px;
+            border-radius: 10px;
+        }
+    }
+
+    .commentTitle {
+        margin: 10px;
+        border-bottom: 1px solid $highlightColor;
+        padding-bottom: 5px;
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+
+    .video__comments {
+        width: 100%;
+        margin: 10px;
+        display: flex;
+        flex-direction: column;
+
+        .video__comments-column {
+            width: 100%;
+            box-sizing: border-box;
+
+            &:first-child {
+                padding: 10px;
+                li {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 90%;
+                    margin-bottom: 20px;
+                }
+
+                div:first-child {
+                    margin-right: 10px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+
+                    img {
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 50%;
+                        margin-bottom: 5px;
+                    }
+
+                    span {
+                        color: $highlightColor;
+                    }
+                }
+
+                div:nth-child(2) {
+                    position: relative;
+                    margin-right: 10px;
+                    width: 80%;
+                    padding: 20px;
+                    background-color: $modalColor;
+                    border-radius: 10px;
+
+                    button {
+                        position: absolute;
+                        width: 28px;
+                        height: 28px;
+                        text-align: center;
+                        font-size: 10px;
+                        border: none;
+                        background: $modalColor;
+                        border-radius: 50%;
+                        top: -10px;
+                        right: -10px;
+                    }
+                }
+            }
+        }
+
+        form {
+            width: 90%;
+            box-sizing: border-box;
+        }
+
+        input {
+            background-color: $highlightColor;
+            color: $modalColor;
+            font-weight: 600;
+            width: 100px;
+            height: 40px;
+        }
+
+        textarea {
+            background-color: $modalColor;
+            border: none;
+            padding: 10px;
+            color: #ffffff;
+            width: 100%;
+            resize: none;
+
+            &:focus {
+                outline-color: $highlightColor;
+            }
+        }
+    }
+}

@@ -7,6 +7,14 @@ mixin video(video)
                     video(src=video.fileUrl) 
                 div.videoText
                     h1=video.title
-                    p= video.description
-                    small=video.createdAt
+
+                    nav
+                        div
+                            <i class="fa-regular fa-eye"></i>
+                            span=video.meta.views
+                        div.copyBtn
+                            span
+                            i.fa-solid.fa-copy(data-id=`videos/${video.id}`)
+                            //- #{`/videos/${video.id}`}
+                    small=String(video.createdAt).substring(11,25).replace(" ","년 ")
             

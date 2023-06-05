@@ -2,54 +2,70 @@ extends ../base.pug
 
 
 block content
+    section.watchSection
+        div(data-id = video._id).videoContainer
+            video(src="/"+video.fileUrl )
 
-    div(data-id = video._id).videoContainer
-        video(src="/"+video.fileUrl controls)
-
-        div
-            button.play Play
-            button.mute Mute
-            input(type="range" step="0.1" value= 0.5 min=0 max=1).volume
-            div
-                span.currentTime 00:00:00
-                span  / 
-                span.totalTime 00:00:00
-
+            div.videoController
                 input(type="range" step = "1" min = "0" value= 0).timeLine
-            button.fullScreen FullScreen
-            
-      
+                div.videoControllerBox
+                    div
+                        button.play 
+                            <i class="fa-solid fa-play"></i>
+                        button.mute
+                            <i class="fa-solid fa-volume-high"></i>
+                        input(type="range" step="0.1" value= 0.5 min=0 max=1).volume
+                        span.currentTime 00:00:00
+                        span  / 
+                        span.totalTime 00:00:00
 
-    
-    div 
-        h2=video.description
-        a(href=`/users/${video.owner._id}`) 
-            small=video.owner.name 
-    div
-        small #{video.meta.views} #{video.meta.views <= 1 ?"view":  "views"} | 
-        small=video.createdAt
-    br
-
-    if String(video.owner._id) === String(loggedInUser._id)
-        a(href=`${video.id}/edit`) Edit video &rarr; 
-        br
-        a(href=`${video.id}/delete`) Delete video &rarr; 
-
-    div.video__comments
-        div.video__comments-column
-            ul 
-                each comment in video.comments.reverse()
-                    li(id= comment._id)
-                        div=comment.text 
-                        if (String(video.owner._id) === String(loggedInUser._id) ) || (String(comment.owner._id)=== String(loggedInUser._id))
-                            button ❌
-        if loggedIn
-            div.video__comments-column
-                form.comment__form#comment__form
-                    textarea(cols="30", rows="10", placeholder = "Comment....")
-                    input(type="submit" value="Comment").comment__form-submit
+                    div 
+                        button.fullScreen
+                            <i class="fa-solid fa-expand"></i>
+                    
+        
 
         
+        div.videoText
+            h1=video.title
+            div.viewDate
+                small #{video.meta.views} #{video.meta.views <= 1 ?"view":  "views"} | 
+                small=String(video.createdAt).substring(11,25).replace(" ","년 ")
+            div.videoOwner
+                a(href=`/users/${video.owner._id}`).user
+                    img(src=video.owner.socialOnly ? video.owner.avatarUrl : "/" +video.owner.avatarUrl, alt="")
+                    small=video.owner.name 
+                if String(video.owner._id) === String(loggedInUser._id)
+                    div
+                        a(href=`${video.id}/edit`) Edit video &rarr; 
+                        br
+                        a(href=`${video.id}/delete`) Delete video &rarr; 
+        
+            pre=video.description
+        br
+
+        
+        h1.commentTitle Comment
+        div.video__comments 
+            
+
+            ul.video__comments-column
+                each comment in video.comments.reverse()
+                    li(id= comment._id)
+                        div
+                            img(src=comment.owner.socialOnly ? comment.owner.avatarUrl : "/" +comment.owner.avatarUrl, alt="")
+                            span=comment.owner.name
+                        div(id= comment._id)
+                            span=comment.text
+                            if (String(video.owner._id) === String(loggedInUser._id) ) || (String(comment.owner._id)=== String(loggedInUser._id))
+                                button ❌
+            if loggedIn
+                div.video__comments-column
+                    form.comment__form#comment__form
+                        textarea(cols="30", rows="10", placeholder = "Comment....")
+                        input(type="submit" value="Comment").comment__form-submit
+
+            
 
 
 

@@ -195,10 +195,14 @@ export const postChangePassword = async (req, res) => {
 
 export const profile = async (req, res) => {
     const { id } = req.params;
-    const user = await User.findById(id).populate("videos");
+    const user = await User.findById(id);
     if (!user) {
         return res.status(404).render("404", { pageTitle: "Not found" });
     }
 
-    return res.render("user/profile.pug", { pageTitle: `${user.name}`, user });
+    const videos = await Video.find({
+        owner: id,
+    }).populate("owner");
+
+    return res.render("user/profile.pug", { pageTitle: `${user.name}`, user, videos });
 };
