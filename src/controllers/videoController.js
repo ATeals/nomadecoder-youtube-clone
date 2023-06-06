@@ -5,6 +5,7 @@ import fs from "fs";
 
 export const home = async (req, res) => {
     const videos = await Video.find({}).sort({ createdAt: "desc" });
+
     res.render("home", { pageTitle: "Home", videos });
 };
 

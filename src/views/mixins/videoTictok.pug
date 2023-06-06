@@ -7,8 +7,12 @@ mixin video(video)
                     video(src=video.fileUrl) 
                 div.videoText
                     h1=video.title
-
                     nav
+                        div 
+                            if !loggedInUser.likeVideos.map((item) => item.toString()).includes(video.id) 
+                                span.likeBtn 🤍
+                            else
+                                span.undoLike ❤️ 
                         div
                             <i class="fa-regular fa-eye"></i>
                             span=video.meta.views

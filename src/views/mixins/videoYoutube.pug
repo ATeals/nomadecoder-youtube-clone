@@ -9,5 +9,5 @@ mixin video(video)
                     div 
                         h1=video.title
                         h2=video.owner.name
-                        small #{video.meta.views >1 ? `${video.meta.views} views` : `${video.meta.views} view`} • #{String(video.createdAt).substring(11,25).replace(" ","년 ")}
-            
+                        small #{video.meta.views >1 ? `${video.meta.views} views` : `${video.meta.views} view`} •  #{video.meta.like >1 ? `${video.meta.like} likes` : `${video.meta.like} like`} • #{String(video.createdAt).substring(11,25).replace(" ","년 ")}
+                        

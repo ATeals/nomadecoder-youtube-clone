@@ -19,13 +19,15 @@ import "../scss/styles.scss";
     const modal = document.querySelector(".modal");
     const profile = document.querySelector(".profile");
 
-    const modalHander = (e) => {
-        modal.classList.toggle("hidden");
-        document.querySelector("main").addEventListener("click", () => {
-            modal.classList.add("hidden");
-        });
-    };
-    profile.addEventListener("click", modalHander);
+    if (profile) {
+        const modalHander = (e) => {
+            modal.classList.toggle("hidden");
+            document.querySelector("main").addEventListener("click", () => {
+                modal.classList.add("hidden");
+            });
+        };
+        profile.addEventListener("click", modalHander);
+    }
 })();
 
 //copy

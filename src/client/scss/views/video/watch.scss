@@ -68,6 +68,9 @@
         h1 {
             font-size: 32px;
             margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .viewDate {

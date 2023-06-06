@@ -206,3 +206,46 @@ export const profile = async (req, res) => {
 
     return res.render("user/profile.pug", { pageTitle: `${user.name}`, user, videos });
 };
+
+export const likeVideo = async (req, res) => {
+    const {
+        params: { id },
+        session: {
+            user: { _id },
+        },
+    } = req;
+
+    const video = await Video.findById(id);
+    const user = await User.findById(_id);
+
+    user.likeVideos.push(video._id);
+    user.save();
+
+    video.meta.like += 1;
+    video.save();
+
+    req.session.user = user;
+
+    return res.sendStatus(200);
+};
+
+export const undoLike = async (req, res) => {
+    const {
+        params: { id },
+        session: {
+            user: { _id },
+        },
+    } = req;
+
+    const video = await Video.findById(id);
+    const user = await User.findById(_id);
+
+    user.likeVideos = user.likeVideos.filter((videoId) => String(videoId) !== id);
+    user.save();
+
+    video.meta.like -= 1;
+    video.save();
+
+    req.session.user = user;
+    return res.sendStatus(200);
+};

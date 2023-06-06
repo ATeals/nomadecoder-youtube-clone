@@ -10,6 +10,7 @@ const userSchema = mongoose.Schema({
     socialOnly: { type: Boolean, default: false },
     avatarUrl: String,
     videos: [{ type: mongoose.Schema.Types.ObjectId, ref: "Video" }],
+    likeVideos: [{ type: mongoose.Schema.Types.ObjectId, ref: "Video" }],
 });
 
 userSchema.pre("save", async function () {
