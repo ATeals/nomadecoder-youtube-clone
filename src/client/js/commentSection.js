@@ -57,27 +57,3 @@ form.addEventListener("submit", async (e) => {
     window.location.reload();
     // addComment(text);
 });
-
-const likeBtn = document.querySelector(".likeBtn");
-const undoLike = document.querySelector(".undoLike");
-
-if (likeBtn) {
-    likeBtn.addEventListener("click", async () => {
-        const { id } = videoContainer.dataset;
-        await fetch(`/api/videos/${id}/like`, {
-            method: "post",
-        });
-
-        window.location.reload();
-    });
-}
-if (undoLike) {
-    undoLike.addEventListener("click", async () => {
-        const { id } = videoContainer.dataset;
-        await fetch(`/api/videos/${id}/undoLike`, {
-            method: "post",
-        });
-
-        window.location.reload();
-    });
-}

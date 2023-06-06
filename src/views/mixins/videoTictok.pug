@@ -10,9 +10,11 @@ mixin video(video)
                     nav
                         div 
                             if !loggedInUser.likeVideos.map((item) => item.toString()).includes(video.id) 
-                                span.likeBtn 🤍
+                                span.likeBtn
+                                    <i class="fa-regular fa-heart"></i>
                             else
-                                span.undoLike ❤️ 
+                                span.undoLike
+                                    <i class="fa-solid fa-heart"></i>
                         div
                             <i class="fa-regular fa-eye"></i>
                             span=video.meta.views
@@ -21,4 +23,4 @@ mixin video(video)
                             i.fa-solid.fa-copy(data-id=`videos/${video.id}`)
                             //- #{`/videos/${video.id}`}
                     small=String(video.createdAt).substring(11,25).replace(" ","년 ")
-            
+    

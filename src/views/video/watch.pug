@@ -31,9 +31,11 @@ block content
                 span= video.title
                 div
                     if !loggedInUser.likeVideos.map((item) => item.toString()).includes(video.id) 
-                        span.likeBtn 🤍
+                        span.likeBtn
+                            <i class="fa-regular fa-heart"></i>
                     else
-                        span.undoLike ❤️ 
+                        span.undoLike
+                            <i class="fa-solid fa-heart"></i>
             div.viewDate
                 small #{video.meta.views} #{video.meta.views <= 1 ?"view":  "views"} • #{video.meta.like} #{video.meta.like <= 1 ?"like":  "likes"} | 
                 small=String(video.createdAt).substring(11,25).replace(" ","년 ")
@@ -81,3 +83,4 @@ block scripts
     script(src="/assets/js/videoPlayer.js")   
     if loggedIn
         script(src="/assets/js/commentSection.js")   
+        script(src="/assets/js/like.js")   
