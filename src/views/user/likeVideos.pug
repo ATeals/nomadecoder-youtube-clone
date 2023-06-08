@@ -1,0 +1,9 @@
+extends ../base.pug
+include ../mixins/videoYoutube
+
+block content
+    section.search
+        
+        ul.videoBox
+            each video in likeVideos
+                +video(video) 

@@ -207,6 +207,16 @@ export const profile = async (req, res) => {
     return res.render("user/profile.pug", { pageTitle: `${user.name}`, user, videos });
 };
 
+export const getLikeVideos = async (req, res) => {
+    const {
+        params: { id },
+    } = req;
+    const { likeVideos } = await User.findById(id).populate("likeVideos");
+    console.log(likeVideos);
+
+    return res.render("user/likeVideos", { likeVideos });
+};
+
 export const likeVideo = async (req, res) => {
     const {
         params: { id },

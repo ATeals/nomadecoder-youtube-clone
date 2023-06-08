@@ -31,9 +31,9 @@ header
                         <i class="fa-regular fa-user"></i>
                         span Profile
 
-                    a(href=``)
-                        <i class="fa-solid fa-film"></i>
-                        span #{loggedInUser.videos.length > 1 ? `${loggedInUser.videos.length} Videos` : `${loggedInUser.videos.length} Video`}
+                    a(href=`/users/${loggedInUser._id}/likeVideos`)
+                        <i class="fa-solid fa-heart"></i>
+                        span #{loggedInUser.likeVideos.length > 1 ? `${loggedInUser.likeVideos.length} Like Videos` : `${loggedInUser.likeVideos.length} Like Video`}
                     a(href="/videos/upload")
                         <i class="fa-solid fa-upload"></i>
                         span Upload Video

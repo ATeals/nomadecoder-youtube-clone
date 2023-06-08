@@ -9,7 +9,7 @@ mixin video(video)
                     h1=video.title
                     nav
                         div 
-                            if !loggedInUser.likeVideos.map((item) => item.toString()).includes(video.id) 
+                            if !loggedInUser.likeVideos.map((item) => item.toString()).includes(video.id)
                                 span.likeBtn
                                     <i class="fa-regular fa-heart"></i>
                             else
