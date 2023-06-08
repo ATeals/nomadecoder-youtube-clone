@@ -4,7 +4,7 @@ import Comment from "../models/Comment";
 import fs from "fs";
 
 export const home = async (req, res) => {
-    const videos = await Video.find({}).sort({ createdAt: "desc" });
+    const videos = await Video.find({}).populate("owner").sort({ createdAt: "desc" });
 
     res.render("home", { pageTitle: "Home", videos });
 };

@@ -213,7 +213,10 @@ export const getLikeVideos = async (req, res) => {
     const {
         params: { id },
     } = req;
-    const { likeVideos } = await User.findById(id).populate("likeVideos");
+    const { likeVideos } = await User.findById(id).populate({
+        path: "likeVideos",
+        populate: { path: "owner" },
+    });
     console.log(likeVideos);
 
     return res.render("user/likeVideos", { likeVideos });

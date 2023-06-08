@@ -3,24 +3,32 @@ mixin video(video)
     article.videoTictok
             div.video-container
 
-                a(href=`/videos/${video.id}`)
-                    video(src=video.fileUrl) 
-                div.videoText
-                    h1=video.title
-                    nav
-                        div 
-                            if !loggedInUser.likeVideos.map((item) => item.toString()).includes(video.id)
-                                span.likeBtn
-                                    <i class="fa-regular fa-heart"></i>
-                            else
-                                span.undoLike
-                                    <i class="fa-solid fa-heart"></i>
-                        div
-                            <i class="fa-regular fa-eye"></i>
-                            span=video.meta.views
-                        div.copyBtn
-                            span
-                            i.fa-solid.fa-copy(data-id=`videos/${video.id}`)
-                            //- #{`/videos/${video.id}`}
-                    small=String(video.createdAt).substring(11,25).replace(" ","년 ")
+                div.box
+
+                    a(href=`/videos/${video.id}`)
+                        video(src=video.fileUrl) 
+                    div.videoText
+                        h1
+                            div=video.title
+                            div 
+                                a(href=`/users/${video.owner._id}`).user
+                                    img(src=video.owner.socialOnly ? video.owner.avatarUrl : "/" +video.owner.avatarUrl, alt="")
+                                    p=video.owner.name 
+                        nav
+                            div(id=video.id)
+                                if !loggedInUser.likeVideos.map((item) => item.toString()).includes(video.id)
+                                    span.likeBtn
+                                        <i class="fa-regular fa-heart"></i>
+                                else
+                                    span.undoLike
+                                        <i class="fa-solid fa-heart"></i>
+                                span=video.meta.like
+                            div
+                                <i class="fa-regular fa-eye"></i>
+                                span=video.meta.views
+                            div.copyBtn
+                                span
+                                i.fa-solid.fa-copy(data-id=`videos/${video.id}`)
+                                //- #{`/videos/${video.id}`}
+                        small=String(video.createdAt).substring(11,25).replace(" ","년 ")
     
