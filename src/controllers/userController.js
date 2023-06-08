@@ -9,6 +9,7 @@ export const getJoin = (req, res) => {
 
 export const postJoin = async (req, res) => {
     const { email, name, username, password, password2, location } = req.body;
+    const avatarUrl = "uploads/avatars/basic.png";
     if (password !== password2) {
         return res.status(400).render("user/createAccount", { pageTitle: "Create Account", error: "Password does not Mach" });
     }
@@ -24,6 +25,7 @@ export const postJoin = async (req, res) => {
             username,
             password,
             location,
+            avatarUrl,
         });
         return res.redirect("/login");
     } catch (error) {
@@ -131,7 +133,7 @@ export const finishGithubLogin = async (req, res) => {
 
 export const logout = (req, res) => {
     req.session.destroy();
-    return res.redirect("/");
+    return res.redirect("user/login");
 };
 
 export const getEdit = (req, res) => {
