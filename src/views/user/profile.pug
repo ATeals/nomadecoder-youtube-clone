@@ -3,7 +3,7 @@ include ../mixins/videoYoutube
 
 block content
     section.profileSection
-        img.profileImg(src=`/${user.avatarUrl}`)
+        img.profileImg(src=loggedInUser.socialOnly ? loggedInUser.avatarUrl : "/" +loggedInUser.avatarUrl, alt="")
         h1 #{user.name}
         div.textBox
             h2 USERNAME : #{user.username}

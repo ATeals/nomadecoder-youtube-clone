@@ -22,7 +22,7 @@ header
         div.modal.hidden
             div.modalBubble
 
-                img(src=`/${loggedInUser.avatarUrl}`)
+                img(src=loggedInUser.socialOnly ? loggedInUser.avatarUrl : "/" +loggedInUser.avatarUrl, alt="")
                 div.username=loggedInUser.name
                 
                 hr
