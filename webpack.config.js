@@ -10,8 +10,6 @@ module.exports = {
         like: "./src/client/js/like.js",
         home: "./src/client/js/home.js",
     },
-    mode: "development",
-    watch: true,
     plugins: [
         new MiniCssExtractPlugin({
             filename: "css/styles.css",
