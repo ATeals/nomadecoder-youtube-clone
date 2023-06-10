@@ -9,7 +9,7 @@ header
                 a(href="/search")  <i class="fa-solid fa-magnifying-glass"></i>
             if loggedIn
                 li.profile
-                    img(src=`/${loggedInUser.avatarUrl}`)
+                    img(src=loggedInUser.socialOnly ? loggedInUser.avatarUrl : "/" +loggedInUser.avatarUrl, alt="")
                    
 
             if !loggedIn
