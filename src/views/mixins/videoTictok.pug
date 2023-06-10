@@ -12,7 +12,7 @@ mixin video(video)
                             div=video.title
                             div 
                                 a(href=`/users/${video.owner._id}`).user
-                                    img(src=video.owner.socialOnly ? video.owner.avatarUrl : "/" +video.owner.avatarUrl, alt="")
+                                    img.userImg(src=video.owner.socialOnly ? video.owner.avatarUrl : "/" +video.owner.avatarUrl, alt="")
                                     p=video.owner.name 
                         nav
                             div(id=video.id)
